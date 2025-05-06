@@ -2,11 +2,10 @@
   "name": "blog-backend",
   "version": "1.0.0",
   "type": "module",
-
   "scripts": {
     "start": "nodemon server.js"
   },
-  "main": "config.js",
+  "main": "server.js",
   "keywords": [],
   "author": "",
   "license": "ISC",

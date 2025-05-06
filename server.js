@@ -7,6 +7,7 @@ import authRoutes from "./routes/authRoutes.js";
 import blogRoutes from "./routes/blogRoutes.js";
 import path from "path";
 import { fileURLToPath } from "url";
+import dashboardRoutes from "./routes/dashboardRoutes.js";
 
 const app = express();
 dotenv.config();
@@ -28,6 +29,7 @@ app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 // Routes
 app.use("/api/auth", authRoutes);
 app.use("/api/blogs", blogRoutes);
+app.use("/dashboard", dashboardRoutes)
 
 app.get("/api/hello", (req, res) => {
   res.json({ message: "Hello from backend!" });

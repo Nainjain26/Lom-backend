@@ -1,5 +1,5 @@
 // controllers/authController.js
-import User from "../models/user.js";
+import User from "../models/User.js";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 
@@ -28,6 +28,10 @@ export const login = async (req, res) => {
 
     if (!user || !(await bcrypt.compare(password, user.password)))
       return res.status(400).json({ message: "Invalid credentials" });
+
+    if (user.role !== "admin") {
+      return res.status(403).json({ message: "Access denied: Admins only" });
+    }
 
     const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
       expiresIn: "7d",
