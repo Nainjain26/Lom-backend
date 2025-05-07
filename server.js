@@ -13,7 +13,8 @@ const app = express();
 dotenv.config();
 
 app.use(cors({
-  origin: "*",
+  origin: ['http://localhost:3000', 'https://lom-blog.vercel.app'],
+  credentials: true,
 }));
 
 
